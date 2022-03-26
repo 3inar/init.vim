@@ -14,7 +14,7 @@ set splitbelow
 set splitright
 
 
-
+" prints the active highlight groups under the cursor
 function! <SID>SynStack()
     if !exists("*synstack")
         return
@@ -24,7 +24,7 @@ endfunc
 
 set title
 
-" space indentation. could be set based on file type, have to figure  it out
+" polyglot overrides the sizes of tabs on a filetype basis actually
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -77,7 +77,3 @@ if (empty($TMUX))
   endif
 endif
 
-"hi LL guibg=red ctermbg=red
-"syn match LL /this/
-"
-" air-line
