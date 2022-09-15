@@ -56,8 +56,10 @@ tnoremap <Esc> <C-\><C-n>
     nmap gx <Plug>(neoterm-repl-send)
     " Send selected contents in visual mode.
     xmap gx <Plug>(neoterm-repl-send)
+    xmap <C-Space> <Plug>(neoterm-repl-send)
     " Send current line 
     nmap gxx <Plug>(neoterm-repl-send-line)
+    nmap <C-Space> <Plug>(neoterm-repl-send-line)
 
 set background=dark
 
