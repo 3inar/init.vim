@@ -45,9 +45,6 @@ call plug#begin()
   Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
-  " Plug 'mileszs/ack.vim'      " fzf good enough for me (Ag command)
-  " Plug 'vim-airline/vim-airline'
-  " Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 
