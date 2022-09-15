@@ -51,6 +51,14 @@ call plug#end()
 " To map <Esc> to exit terminal-mode: 
 tnoremap <Esc> <C-\><C-n>
 
+" Shortcuts for REPL with neoterm
+    " Use gx{text-object} in normal mode
+    nmap gx <Plug>(neoterm-repl-send)
+    " Send selected contents in visual mode.
+    xmap gx <Plug>(neoterm-repl-send)
+    " Send current line 
+    nmap gxx <Plug>(neoterm-repl-send-line)
+
 set background=dark
 
 let g:gruvbox_italic=1
