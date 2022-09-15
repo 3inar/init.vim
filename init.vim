@@ -45,8 +45,11 @@ call plug#begin()
   Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
+  Plug 'kassio/neoterm'                 " improved terminal, REPL support
 call plug#end()
 
+" To map <Esc> to exit terminal-mode: 
+tnoremap <Esc> <C-\><C-n>
 
 set background=dark
 
