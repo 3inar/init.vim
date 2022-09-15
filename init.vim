@@ -38,16 +38,16 @@ map <C-k> <C-w><Up>
 call plug#begin()
   Plug 'tpope/vim-sensible'             " some sensible defaults
   Plug 'sheerun/vim-polyglot'           " improved syntax highlight
-  Plug 'itchyny/lightline.vim'
-  Plug 'mileszs/ack.vim'
-  Plug 'junegunn/goyo.vim'
-  Plug 'morhetz/gruvbox'
+  Plug 'itchyny/lightline.vim'          " like a nicer status bar
+  Plug 'junegunn/goyo.vim'              " focus mode
+  Plug 'junegunn/limelight.vim'         " highlights current §
+  Plug 'morhetz/gruvbox'                " color scheme
   Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf.vim'               " search of various sorts
+  " Plug 'mileszs/ack.vim'      " fzf good enough for me (Ag command)
   " Plug 'vim-airline/vim-airline'
   " Plug 'altercation/vim-colors-solarized'
-  Plug 'junegunn/limelight.vim'       " highlights current § 
 call plug#end()
 
 
