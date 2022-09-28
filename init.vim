@@ -13,6 +13,9 @@ set hidden " allow jumping buffers without save
 set splitbelow
 set splitright
 
+" line 80 marker
+set colorcolumn=80
+
 
 " prints the active highlight groups under the cursor
 function! <SID>SynStack()
@@ -46,6 +49,7 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
   Plug 'kassio/neoterm'                 " improved terminal, REPL support
+  Plug 'eigenfoo/stan-vim'              " syntax highlihging stan
 call plug#end()
 
 " To map <Esc> to exit terminal-mode: 
