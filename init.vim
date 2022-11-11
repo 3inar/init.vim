@@ -72,6 +72,8 @@ let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
 let g:lightline = {'colorscheme': 'gruvbox'}
 
+" I don't like getting into the jump list of previous sessions
+autocmd VimEnter * :clearjumps
 
 colorscheme gruvbox
 
