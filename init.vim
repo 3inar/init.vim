@@ -5,9 +5,10 @@ nmap ,wc :! wc -w % <Enter>
 " SynStack shows the highlight groups under the cursor
 nmap ,i :call <SID>SynStack()<CR>
 
-syntax enable " syntax on may overwrite custom rules
-set number " line numbers
-set hidden " allow jumping buffers without save
+syntax enable         " syntax on may overwrite custom rules
+set number            " line numbers
+set relativenumber    " relative line numbers
+set hidden            " allow jumping buffers without save
 
 " sensible splits
 set splitbelow
