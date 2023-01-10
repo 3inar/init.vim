@@ -46,6 +46,7 @@ call plug#begin()
   Plug 'junegunn/goyo.vim'              " focus mode
   Plug 'junegunn/limelight.vim'         " highlights current §
   Plug 'morhetz/gruvbox'                " color scheme
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
@@ -71,12 +72,12 @@ set background=dark
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
-let g:lightline = {'colorscheme': 'gruvbox'}
+let g:lightline = {'colorscheme': 'tokyonight'}
 
 " I don't like getting into the jump list of previous sessions
 autocmd VimEnter * :clearjumps
 
-colorscheme gruvbox
+colorscheme tokyonight-moon
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
