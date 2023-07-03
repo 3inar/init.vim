@@ -95,3 +95,5 @@ if (empty($TMUX))
   endif
 endif
 
+" polyglot uses a csv.vim plugin that replaces , with | in csv
+let g:csv_no_conceal = 1
