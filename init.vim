@@ -100,5 +100,10 @@ if (empty($TMUX))
   endif
 endif
 
+
 " polyglot uses a csv.vim plugin that replaces , with | in csv
 let g:csv_no_conceal = 1
+
+" R vim thing has a childish map that maps _ to <- in insert mode;
+" the below removes this annoyance
+let R_assign = 0
