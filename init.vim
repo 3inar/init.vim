@@ -5,6 +5,9 @@ nmap ,wc :! wc -w % <Enter>
 " SynStack shows the highlight groups under the cursor
 nmap ,i :call <SID>SynStack()<CR>
 
+" huge protip by Anders
+imap jj <Esc>
+
 syntax enable         " syntax on may overwrite custom rules
 set number            " line numbers
 set relativenumber    " relative line numbers
