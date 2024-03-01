@@ -10,7 +10,7 @@ imap jj <Esc>
 
 syntax enable         " syntax on may overwrite custom rules
 set number            " line numbers
-set relativenumber    " relative line numbers
+" set relativenumber    " relative line numbers
 set hidden            " allow jumping buffers without save
 
 " sensible splits
@@ -45,7 +45,6 @@ map <C-k> <C-w><Up>
 call plug#begin()
   Plug 'tpope/vim-sensible'             " some sensible defaults
   Plug 'sheerun/vim-polyglot'           " improved syntax highlight
-  Plug 'itchyny/lightline.vim'          " like a nicer status bar
   Plug 'junegunn/goyo.vim'              " focus mode
   Plug 'junegunn/limelight.vim'         " highlights current §
   Plug 'morhetz/gruvbox'                " color scheme
@@ -55,6 +54,8 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'               " search of various sorts
   Plug 'kassio/neoterm'                 " improved terminal, REPL support
   Plug 'eigenfoo/stan-vim'              " syntax highlihging stan
+  Plug 'jalvesaq/Nvim-R'                " R development
+  Plug 'noahfrederick/vim-noctu'
 call plug#end()
 
 " To map <Esc> to exit terminal-mode: 
@@ -75,12 +76,13 @@ set background=dark
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
-let g:lightline = {'colorscheme': 'tokyonight'}
+
+colorscheme gruvbox
+
 
 " I don't like getting into the jump list of previous sessions
 autocmd VimEnter * :clearjumps
 
-colorscheme tokyonight-moon
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
