@@ -8,8 +8,8 @@ nmap ,i :call <SID>SynStack()<CR>
 " huge protip by Anders
 imap jj <Esc>
 
-" no need for a special unnamed buffer, use clipboard
-set clipboard+=unnamed
+" if you want to yank to clipboard insteaed of the "* buffer
+"set clipboard+=unnamed
 
 syntax enable         " syntax on may overwrite custom rules
 set number            " line numbers
