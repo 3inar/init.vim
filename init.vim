@@ -8,6 +8,10 @@ nmap ,i :call <SID>SynStack()<CR>
 " huge protip by Anders
 imap jj <Esc>
 
+" don't treat broken lines as one thing when moving in norm mode
+nmap j gj
+nmap k gk
+
 " if you want to yank to clipboard insteaed of the "* buffer
 "set clipboard+=unnamed
 
@@ -71,8 +75,8 @@ tnoremap <Esc> <C-\><C-n>
     xmap gx <Plug>(neoterm-repl-send)
     xmap <C-Space> <Plug>(neoterm-repl-send)
     " Send current line 
-    nmap gxx <Plug>(neoterm-repl-send-line)
-    nmap <C-Space> <Plug>(neoterm-repl-send-line)
+    nmap gxx <Plug>(neoterm-repl-send-line) j 0
+    nmap <C-Space> <Plug>(neoterm-repl-send-line) j 0
 
 set background=dark
 
