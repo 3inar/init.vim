@@ -61,8 +61,9 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'               " search of various sorts
   Plug 'kassio/neoterm'                 " improved terminal, REPL support
   Plug 'eigenfoo/stan-vim'              " syntax highlihging stan
-  Plug 'jalvesaq/Nvim-R'                " R development
-  Plug 'noahfrederick/vim-noctu'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " R.nvim needs this
+  Plug 'R-nvim/R.nvim'                  " R development
+  Plug 'm4xshen/hardtime.nvim' | Plug 'MunifTanjim/nui.nvim' | Plug 'nvim-lua/plenary.nvim'
 call plug#end()
 
 " To map <Esc> to exit terminal-mode: 
