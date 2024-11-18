@@ -15,9 +15,7 @@ nmap k gk
 " if you want to yank to clipboard insteaed of the "* buffer
 "set clipboard+=unnamed
 
-syntax enable         " syntax on may overwrite custom rules
 set number            " line numbers
-" set relativenumber    " relative line numbers
 set hidden            " allow jumping buffers without save
 
 " sensible splits
@@ -38,7 +36,7 @@ endfunc
 
 set title
 
-" polyglot overrides the sizes of tabs on a filetype basis actually
+" might want to have this on a filetype basis
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -51,7 +49,6 @@ map <C-k> <C-w><Up>
 
 call plug#begin()
   Plug 'tpope/vim-sensible'             " some sensible defaults
-  Plug 'sheerun/vim-polyglot'           " improved syntax highlight
   Plug 'junegunn/goyo.vim'              " focus mode
   Plug 'junegunn/limelight.vim'         " highlights current §
   Plug 'morhetz/gruvbox'                " color scheme
@@ -60,14 +57,45 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
   Plug 'kassio/neoterm'                 " improved terminal, REPL support
-  Plug 'eigenfoo/stan-vim'              " syntax highlihging stan
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " R.nvim needs this
-  Plug 'R-nvim/R.nvim'                  " R development
-  Plug 'm4xshen/hardtime.nvim' | Plug 'MunifTanjim/nui.nvim' | Plug 'nvim-lua/plenary.nvim'
+  " Plug 'Olical/conjure'    " looks nice for lisps. can we get it to do R?
 call plug#end()
 
 " To map <Esc> to exit terminal-mode: 
 tnoremap <Esc> <C-\><C-n>
+
+" autocmd TermOpen * let g:last_term=&channel
+"
+
+" treesitter takes its config in lua apparently
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    -- disable = function(lang, buf)
+    --     local max_filesize = 100 * 1024 -- 100 KB
+    --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+    --     if ok and stats and stats.size > max_filesize then
+    --         return true
+    --     end
+    -- end,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
 
 " Shortcuts for REPL with neoterm
     " Use gx{text-object} in normal mode
@@ -86,7 +114,6 @@ let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
 
 colorscheme gruvbox
-
 
 " I don't like getting into the jump list of previous sessions
 autocmd VimEnter * :clearjumps
@@ -108,10 +135,3 @@ if (empty($TMUX))
   endif
 endif
 
-
-" polyglot uses a csv.vim plugin that replaces , with | in csv
-let g:csv_no_conceal = 1
-
-" R vim thing has a childish map that maps _ to <- in insert mode;
-" the below removes this annoyance
-let R_assign = 0
