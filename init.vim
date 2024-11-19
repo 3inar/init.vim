@@ -52,6 +52,10 @@ call plug#begin()
   Plug 'junegunn/goyo.vim'              " focus mode
   Plug 'junegunn/limelight.vim'         " highlights current §
   Plug 'morhetz/gruvbox'                " color scheme
+  Plug 'xero/miasma.nvim'
+  Plug 'savq/melange-nvim'
+  Plug 'rebelot/kanagawa.nvim'
+  Plug 'jaredgorski/fogbell.vim'
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -131,11 +135,7 @@ vim.filetype.add {
 } 
 EOF
 
-set background=dark
-
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark="soft"
-let g:gruvbox_contrast_light="soft"
+colorscheme kanagawa-wave
 
 nmap L <Plug>SendRight
 xmap L <Plug>SendRightV
@@ -146,11 +146,8 @@ xmap K <Plug>SendUpV
 nmap J <Plug>SendDown
 xmap J <Plug>SendDownV
 
-colorscheme gruvbox
-
 " I don't like getting into the jump list of previous sessions
 autocmd VimEnter * :clearjumps
-
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
