@@ -111,9 +111,25 @@ require'nvim-treesitter.configs'.setup {
   },
 },
 }
+
 EOF
 
+" add stan parser to treesitter. note that you have to get the query files
+" from that repo and put them in ~/.config/nvim/queries/stan/
+lua << EOF
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.stan = {
+  install_info = {
+    url = 'https://github.com/WardBrian/tree-sitter-stan',
+    files = { 'src/parser.c' }, 
+    branch = 'main',
+  },
+}
 
+vim.filetype.add {
+  extension = { stan = 'stan' },
+} 
+EOF
 
 set background=dark
 
