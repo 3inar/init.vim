@@ -1,4 +1,4 @@
-command Config :sp ~/.config/nvim/init.vim
+command Config :e ~/.config/nvim/init.vim
  
 nmap ,wc :! wc -w % <Enter>
 
@@ -56,8 +56,9 @@ call plug#begin()
   Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
-  Plug 'kassio/neoterm'                 " improved terminal, REPL support
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " R.nvim needs this
+  Plug 'David-Kunz/treesitter-unit'
+  Plug 'karoliskoncevicius/vim-sendtowindow'
   " Plug 'Olical/conjure'    " looks nice for lisps. can we get it to do R?
 call plug#end()
 
@@ -66,6 +67,12 @@ tnoremap <Esc> <C-\><C-n>
 
 " autocmd TermOpen * let g:last_term=&channel
 "
+
+" treesitter units
+xnoremap iu :lua require"treesitter-unit".select()<CR>
+xnoremap au :lua require"treesitter-unit".select(true)<CR>
+onoremap iu :<c-u>lua require"treesitter-unit".select()<CR>
+onoremap au :<c-u>lua require"treesitter-unit".select(true)<CR>
 
 " treesitter takes its config in lua apparently
 lua << EOF
@@ -93,25 +100,35 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+
+  incremental_selection = {
+  enable = true,
+  keymaps = {
+    init_selection = '<CR>',
+    scope_incremental = false,
+    node_incremental = '<CR>',
+    node_decremental = '<S-CR>',
+  },
+},
 }
 EOF
 
 
-" Shortcuts for REPL with neoterm
-    " Use gx{text-object} in normal mode
-    nmap gx <Plug>(neoterm-repl-send)
-    " Send selected contents in visual mode.
-    xmap gx <Plug>(neoterm-repl-send)
-    xmap <C-Space> <Plug>(neoterm-repl-send)
-    " Send current line 
-    nmap gxx <Plug>(neoterm-repl-send-line) j 0
-    nmap <C-Space> <Plug>(neoterm-repl-send-line) j 0
 
 set background=dark
 
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="soft"
+
+nmap L <Plug>SendRight
+xmap L <Plug>SendRightV
+nmap H <Plug>SendLeft
+xmap H <Plug>SendLeftV
+nmap K <Plug>SendUp
+xmap K <Plug>SendUpV
+nmap J <Plug>SendDown
+xmap J <Plug>SendDownV
 
 colorscheme gruvbox
 
