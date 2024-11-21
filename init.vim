@@ -22,7 +22,7 @@ set hidden            " allow jumping buffers without save
 set splitbelow
 set splitright
 
-" line 80 marker
+" line 80 marker; don't seem to work with miasma
 set colorcolumn=80
 
 
@@ -48,15 +48,23 @@ map <C-j> <C-w><Down>
 map <C-k> <C-w><Up>
 
 call plug#begin()
+"   Plug 'morhetz/gruvbox'                " color schemes
+"   Plug 'xero/miasma.nvim'
+"   Plug 'savq/melange-nvim'
+"   Plug 'rebelot/kanagawa.nvim'
+"   Plug 'jaredgorski/fogbell.vim'
+"   Plug 'jeffkreeftmeijer/vim-dim'       " dim and noctu use the 16 terminal cols
+"   Plug 'noahfrederick/vim-noctu'
+"   Plug 'Matsuuu/pinkmare'
+"   Plug 'zenbones-theme/zenbones.nvim'   " https://vimcolorschemes.com/zenbones-theme/zenbones.nvim
+"   Plug 'rktjmp/lush.nvim',
+"   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'sainnhe/everforest'
+
+
   Plug 'tpope/vim-sensible'             " some sensible defaults
   Plug 'junegunn/goyo.vim'              " focus mode
   Plug 'junegunn/limelight.vim'         " highlights current §
-  Plug 'morhetz/gruvbox'                " color scheme
-  Plug 'xero/miasma.nvim'
-  Plug 'savq/melange-nvim'
-  Plug 'rebelot/kanagawa.nvim'
-  Plug 'jaredgorski/fogbell.vim'
-  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
@@ -135,16 +143,17 @@ vim.filetype.add {
 } 
 EOF
 
-colorscheme kanagawa-wave
+colorscheme everforest
 
-nmap L <Plug>SendRight
-xmap L <Plug>SendRightV
-nmap H <Plug>SendLeft
-xmap H <Plug>SendLeftV
-nmap K <Plug>SendUp
-xmap K <Plug>SendUpV
-nmap J <Plug>SendDown
-xmap J <Plug>SendDownV
+" need to think about this: I use J for joining text lines
+" nmap L <Plug>SendRight
+" xmap L <Plug>SendRightV
+" nmap H <Plug>SendLeft
+" xmap H <Plug>SendLeftV
+" nmap K <Plug>SendUp
+" xmap K <Plug>SendUpV
+" nmap J <Plug>SendDown
+" xmap J <Plug>SendDownV
 
 " I don't like getting into the jump list of previous sessions
 autocmd VimEnter * :clearjumps
