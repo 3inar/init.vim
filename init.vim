@@ -154,6 +154,7 @@ colorscheme everforest
 " xmap K <Plug>SendUpV
 " nmap J <Plug>SendDown
 " xmap J <Plug>SendDownV
+nmap <Space><Space> V<Space>j
 
 " I don't like getting into the jump list of previous sessions
 autocmd VimEnter * :clearjumps
