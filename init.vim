@@ -1,5 +1,20 @@
 command Config :e ~/.config/nvim/init.vim
  
+" more quickly make a checkbox
+let logpath = '/Users/einar/Library/CloudStorage/Dropbox/knowledge/log.txt'
+function Logsettings()
+  iabbrev [  [ ]
+  call search('LOG')
+endfunction
+execute 'autocmd BufRead,BufNewFile ' . logpath . ' call Logsettings()'
+
+" even more quickly make a checkbox
+nmap ,[ o[ 
+"
+" check a checkbox
+nmap ,c :silent! s/\[ \]/\[x\]/g<CR>:noh<CR>:echo ''<CR>j
+
+" wordcount
 nmap ,wc :! wc -w % <Enter>
 
 " SynStack shows the highlight groups under the cursor
