@@ -9,7 +9,7 @@ endfunction
 execute 'autocmd BufRead,BufNewFile ' . logpath . ' call Logsettings()'
 
 " even more quickly make a checkbox
-nmap ,[ o[ 
+nmap ,[ A<CR><Esc>C[ ] 
 "
 " check a checkbox
 nmap ,c :silent! s/\[ \]/\[x\]/g<CR>:noh<CR>:echo ''<CR>j
