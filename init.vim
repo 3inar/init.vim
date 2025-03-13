@@ -158,6 +158,19 @@ vim.filetype.add {
 } 
 EOF
 
+lua << EOF
+vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+  pattern = {"*.*"},
+  desc = "save view (folds), when closing file",
+  command = "mkview",
+})
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+  pattern = {"*.*"},
+  desc = "load view (folds), when opening file",
+  command = "silent! loadview"
+})
+EOF
+
 colorscheme everforest
 
 " need to think about this: I use J for joining text lines
