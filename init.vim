@@ -5,14 +5,15 @@ let logpath = '/Users/einar/Library/CloudStorage/Dropbox/knowledge/log.txt'
 function Logsettings()
   iabbrev [  [ ]
   call search('LOG')
+  normal z.
 endfunction
 execute 'autocmd BufRead,BufNewFile ' . logpath . ' call Logsettings()'
 
 " even more quickly make a checkbox
-nmap ,[ A<CR><Esc>C[ ] 
+nmap ,[ o[ ] 
 "
 " check a checkbox
-nmap ,c :silent! s/\[ \]/\[x\]/g<CR>:noh<CR>:echo ''<CR>j
+nmap ,c :silent! s/\[ \]/\[x\]/<CR>:noh<CR>:echo ''<CR>j
 
 " wordcount
 nmap ,wc :! wc -w % <Enter>
