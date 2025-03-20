@@ -3,17 +3,15 @@ command Config :e ~/.config/nvim/init.vim
 " more quickly make a checkbox
 let logpath = '/Users/einar/Library/CloudStorage/Dropbox/knowledge/log.txt'
 function Logsettings()
+  " checkbox manipulations
   iabbrev [  [ ]
+  nmap ,[ o[ ] 
+  nmap ,c :silent! s/\[ \]/\[x\]/<CR>:noh<CR>:echo ''<CR>j
+
   call search('LOG')
   normal z.
 endfunction
 execute 'autocmd BufRead,BufNewFile ' . logpath . ' call Logsettings()'
-
-" even more quickly make a checkbox
-nmap ,[ o[ ] 
-"
-" check a checkbox
-nmap ,c :silent! s/\[ \]/\[x\]/<CR>:noh<CR>:echo ''<CR>j
 
 " wordcount
 nmap ,wc :! wc -w % <Enter>
@@ -160,6 +158,7 @@ vim.filetype.add {
 EOF
 
 lua << EOF
+-- save/restore folds
 vim.api.nvim_create_autocmd({"BufWinLeave"}, {
   pattern = {"*.*"},
   desc = "save view (folds), when closing file",
@@ -170,6 +169,39 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   desc = "load view (folds), when opening file",
   command = "silent! loadview"
 })
+
+-- settings to apply only for log file
+local function Logsettings()
+  -- Checkbox manipulations
+  vim.cmd('iabbrev [ [ ]')
+  vim.api.nvim_set_keymap('n', ',[', 'o[ ]<CR>', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', ',c', ':silent! s/\\[ \\]/[x]/<CR>:noh<CR>:echo ""<CR>j', { noremap = true, silent = true })
+end
+
+-- center view on start of log
+local function Logview()
+  if not logSettingsApplied then   -- i don't want this to trigger for each windowevent, only once
+    vim.fn.search('LOG')
+    vim.cmd('normal z.')
+    logSettingsApplied = true
+  end
+end
+
+-- apply log settings when log fle entered
+local logpath = '/Users/einar/Library/CloudStorage/Dropbox/knowledge/log.txt'
+vim.api.nvim_create_autocmd({"BufRead"}, {
+  pattern = logpath,
+  desc = "Set log settings for log.txt",
+  callback = Logsettings
+})
+
+-- center on log start when log entered
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+  pattern = logpath,
+  desc = "center log.txt when entered",
+  callback=Logview
+})
+
 EOF
 
 colorscheme everforest
