@@ -75,6 +75,8 @@ call plug#begin()
 "   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'sainnhe/everforest'
 
+  Plug 'jamessan/vim-gnupg'
+
 
   Plug 'tpope/vim-sensible'             " some sensible defaults
   Plug 'junegunn/goyo.vim'              " focus mode
