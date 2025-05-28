@@ -86,7 +86,7 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'               " search of various sorts
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " R.nvim needs this
   Plug 'David-Kunz/treesitter-unit'
-  Plug 'karoliskoncevicius/vim-sendtowindow'
+  Plug '~/Dropbox/repos/send.vim'       " send to window (basic REPL mode)
   " Plug 'Olical/conjure'    " looks nice for lisps. can we get it to do R?
 call plug#end()
 
