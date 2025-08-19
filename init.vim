@@ -152,7 +152,9 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   desc = "load view (folds), when opening file",
   command = "silent! loadview"
 })
+EOF
 
+lua << EOF
 -- settings to apply only for log file
 local function Logsettings()
   -- Checkbox manipulations
@@ -184,7 +186,6 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   desc = "center log.txt when entered",
   callback=Logview
 })
-
 EOF
 
 colorscheme everforest
