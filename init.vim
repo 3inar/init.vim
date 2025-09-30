@@ -1,4 +1,5 @@
 command Config :e ~/.config/nvim/init.vim
+command Rterm :sp term://R --vanilla | winc 10-
  
 " more quickly make a checkbox
 let logpath = '/Users/einar/Library/CloudStorage/Dropbox/knowledge/log.txt'
@@ -17,7 +18,9 @@ execute 'autocmd BufRead,BufNewFile ' . logpath . ' call Logsettings()'
 nmap ,wc :! wc -w % <Enter>
 
 " SynStack shows the highlight groups under the cursor
-nmap ,i :call <SID>SynStack()<CR>
+" nmap ,i :call <SID>SynStack()<CR>
+
+nmap ,i I(§) <Esc>
 
 " huge protip by Anders
 imap jj <Esc>
@@ -25,6 +28,9 @@ imap jj <Esc>
 " don't treat broken lines as one thing when moving in norm mode
 nmap j gj
 nmap k gk
+
+" copy to clipboard
+vmap ,8 "*y
 
 " if you want to yank to clipboard insteaed of the "* buffer
 "set clipboard+=unnamed
