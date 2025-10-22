@@ -9,6 +9,9 @@ function Logsettings()
   nmap ,[ o[ ] 
   nmap ,c :silent! s/\[ \]/\[x\]/<CR>:noh<CR>:echo ''<CR>j
 
+  " course tags I keep writing
+  iabbrev 103 #inf0103_25
+
   call search('LOG')
   normal z.
 endfunction
