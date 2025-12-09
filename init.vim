@@ -1,22 +1,7 @@
 command Config :e ~/.config/nvim/init.vim
 command Rterm :sp term://R --vanilla | winc 10-
+command Rkterm :sp term://racket | winc 10-
  
-" more quickly make a checkbox
-let logpath = '/Users/einar/Library/CloudStorage/Dropbox/knowledge/log.txt'
-function Logsettings()
-  " checkbox manipulations
-  iabbrev [  [ ]
-  nmap ,[ o[ ] 
-  nmap ,c :silent! s/\[ \]/\[x\]/<CR>:noh<CR>:echo ''<CR>j
-
-  " course tags I keep writing
-  iabbrev 103 #inf0103_25
-
-  call search('LOG')
-  normal z.
-endfunction
-execute 'autocmd BufRead,BufNewFile ' . logpath . ' call Logsettings()'
-
 " wordcount
 nmap ,wc :! wc -w % <Enter>
 
@@ -90,12 +75,12 @@ call plug#begin()
   Plug 'tpope/vim-sensible'             " some sensible defaults
   Plug 'junegunn/goyo.vim'              " focus mode
   Plug 'junegunn/limelight.vim'         " highlights current §
-  Plug '~/Dropbox/repos/zett.vim'       " dev version of zettel functionality
+  Plug '~/Sync/repos/zett.vim'       " dev version of zettel functionality
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " search of various sorts
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " R.nvim needs this
   Plug 'David-Kunz/treesitter-unit'
-  Plug '~/Dropbox/repos/send.vim'       " send to window (basic REPL mode)
+  Plug '~/Sync/repos/send.vim'       " send to window (basic REPL mode)
   " Plug 'Olical/conjure'    " looks nice for lisps. can we get it to do R?
 call plug#end()
 
@@ -170,6 +155,15 @@ local function Logsettings()
   vim.cmd('iabbrev [ [ ]')
   vim.api.nvim_set_keymap('n', ',[', 'o[ ]<CR>', { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', ',c', ':silent! s/\\[ \\]/[x]/<CR>:noh<CR>:echo ""<CR>j', { noremap = true, silent = true })
+  
+  -- tag expansions
+  vim.cmd('iabbrev 103 #inf0103_25')
+  vim.cmd('iabbrev 101 #inf0101_25')
+  vim.cmd('iabbrev 2310 #inf2310_26')
+  vim.cmd('iabbrev pp #pigs')
+  vim.cmd('iabbrev dp #dips')
+  vim.cmd('iabbrev henr #henrik_committee')
+  vim.cmd('iabbrev obs #oblique_strategy')
 end
 
 -- center view on start of log
@@ -182,7 +176,7 @@ local function Logview()
 end
 
 -- apply log settings when log fle entered
-local logpath = '/Users/einar/Library/CloudStorage/Dropbox/knowledge/log.txt'
+local logpath = vim.fn.expand('~/Sync/knowledge/log.txt')
 vim.api.nvim_create_autocmd({"BufRead"}, {
   pattern = logpath,
   desc = "Set log settings for log.txt",
