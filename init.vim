@@ -155,6 +155,11 @@ local function Logsettings()
   vim.cmd('iabbrev [ [ ]')
   vim.api.nvim_set_keymap('n', ',[', 'o[ ]<CR>', { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', ',c', ':silent! s/\\[ \\]/[x]/<CR>:noh<CR>:echo ""<CR>j', { noremap = true, silent = true })
+
+  -- misc shorthand
+  vim.cmd('iabbrev mw meet with')
+  vim.cmd('iabbrev smw supervision meet with')
+
   
   -- tag expansions
   vim.cmd('iabbrev 103 #inf0103_25')
@@ -162,8 +167,8 @@ local function Logsettings()
   vim.cmd('iabbrev 2310 #inf2310_26')
   vim.cmd('iabbrev pp #pigs')
   vim.cmd('iabbrev dp #dips')
-  vim.cmd('iabbrev henr #henrik_committee')
-  vim.cmd('iabbrev obs #oblique_strategy')
+  vim.cmd('iabbrev obq #oblique_strategy')
+  vim.cmd('iabbrev 7y #7years')
 end
 
 -- center view on start of log
