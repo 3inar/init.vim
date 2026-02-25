@@ -8,7 +8,7 @@ nmap ,wc :! wc -w % <Enter>
 " SynStack shows the highlight groups under the cursor
 " nmap ,i :call <SID>SynStack()<CR>
 
-nmap ,i I(§) <Esc>
+nmap ,i I(§) 
 
 " huge protip by Anders
 imap jj <Esc>
